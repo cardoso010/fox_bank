@@ -15,9 +15,13 @@ defmodule FoxBank.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: FoxBank.PubSub},
       # Start the Endpoint (http/https)
-      FoxBankWeb.Endpoint
+      FoxBankWeb.Endpoint,
       # Start a worker by calling: FoxBank.Worker.start_link(arg)
       # {FoxBank.Worker, arg}
+      # Commanded
+      FoxBank.CommandedApplication,
+      # EventStore
+      FoxBank.EventStore
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

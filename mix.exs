@@ -20,7 +20,7 @@ defmodule FoxBank.MixProject do
   def application do
     [
       mod: {FoxBank.Application, []},
-      extra_applications: [:ex_machina, :logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
@@ -50,6 +50,10 @@ defmodule FoxBank.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+
+      # Commanded
+      {:commanded, "~> 1.3"},
+      {:commanded_eventstore_adapter, "~> 1.2"},
 
       # Code Quality
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},

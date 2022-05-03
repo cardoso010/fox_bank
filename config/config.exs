@@ -47,6 +47,18 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Commanded Application Configuration
+config :fox_bank, FoxBank.CommandedApplication,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: FoxBank.EventStore
+  ],
+  pubsub: :local,
+  registry: :local
+
+# EventoStore
+config :fox_bank, event_stores: [FoxBank.EventStore]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
