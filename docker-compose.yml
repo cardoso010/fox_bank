@@ -1,0 +1,40 @@
+version: "3.6"
+
+x-networks: &default-networks
+  networks:
+    - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    name: "rifex-network"
+
+services:
+  db:
+    <<: *default-networks
+    image: "postgres:11-alpine"
+    container_name: "rifex_db"
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    restart: always
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    ports:
+      - 5432:5432
+  web:
+    <<: *default-networks
+    build: .
+    container_name: "rifex_web"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/app
+volumes:
+  pgdata:
