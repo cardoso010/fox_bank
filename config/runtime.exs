@@ -80,4 +80,15 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+  database_eventstore_url =
+    System.get_env("DATABASE_EVENTSORE_URL") ||
+      raise """
+      environment variable DATABASE_EVENTSORE_URL is missing.
+      For example: postgres://USER:PASS@HOST/DATABASE
+      """
+
+  config :my_app, FoxBank.EventStore,
+    serializer: Commanded.Serialization.JsonSerializer,
+    url: database_eventstore_url
 end

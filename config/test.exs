@@ -28,3 +28,10 @@ config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Commanded
+config :fox_bank, FoxBank.CommandedApplication,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.InMemory,
+    serializer: Commanded.Serialization.JsonSerializer
+  ]
