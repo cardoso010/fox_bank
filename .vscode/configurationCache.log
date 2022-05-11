@@ -1,0 +1,1 @@
+{"buildTargets":["build_image","push_image","tag_image"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

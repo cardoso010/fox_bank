@@ -53,6 +53,7 @@ defmodule FoxBank.MixProject do
 
       # Commanded
       {:commanded, "~> 1.3"},
+      {:commanded_ecto_projections, "~> 1.2"},
       {:commanded_eventstore_adapter, "~> 1.2"},
 
       # Code Quality
@@ -71,9 +72,12 @@ defmodule FoxBank.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup"],
+      setup: ["deps.get", "event_store.setup", "ecto.setup"],
+      reset: ["event_store.reset", "ecto.reset"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "event_store.setup": ["event_store.create", "event_store.init"],
+      "event_store.reset": ["event_store.drop"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"],
       quality: ["format", "credo --strict"]

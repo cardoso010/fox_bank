@@ -76,7 +76,9 @@ config :phoenix, :plug_init_mode, :runtime
 
 # EventoStore
 config :fox_bank, FoxBank.EventStore,
+  column_data_type: "jsonb",
   serializer: Commanded.Serialization.JsonSerializer,
+  types: EventStore.PostgresTypes,
   username: "postgres",
   password: "postgres",
   database: "fox_bank_eventstore_dev",

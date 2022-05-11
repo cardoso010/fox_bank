@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/gabrielcardoso/Documents/projects/fox_bank'
+docker image build -f "Dockerfile" . -t "fox_bank:latest" -t "fox_bank: 0.1.0"
+make: Leaving directory `/Users/gabrielcardoso/Documents/projects/fox_bank'
+ 

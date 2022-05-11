@@ -19,7 +19,10 @@ defmodule FoxBank.Application do
       # Start a worker by calling: FoxBank.Worker.start_link(arg)
       # {FoxBank.Worker, arg}
       # Commanded
-      FoxBank.CommandedApplication
+      FoxBank.CommandedApplication,
+
+      # Projectors
+      FoxBank.Core.Accounts.Supervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
